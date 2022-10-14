@@ -22,13 +22,19 @@ function App() {
     reminder: true
   }])
   
-  
+  // Delete Task
+  const deleteTask = (id) => setTask(tasks.filter((task) => task.id !== id)) 
+    
+  // Toggle Reminder 
+  const toggleReminder = (id) => setTask(tasks.map((task)=> task.id === id ?{...task, reminder:false}: task))
+
   return (
     <div className="container">
         <Header />
-        <Tasks tasks={tasks}/>
+        {tasks.length > 0 ?<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>: <p>No Tasks to Show</p>}
     </div>
   );
 }
+
 
 export default App;
