@@ -1,10 +1,25 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+import Button from './Button'
 
-const Header = () => {
+const Header = ({title}) => {
+    const onClick = () => {
+        console.log('click')
+    }
   return (
-    <div className='header'>
-        <h1>Hello World 2</h1>
-    </div>
+    <header className='header'>
+        <h1>{title}</h1>
+        <Button color='green' text='Add' onClick={onClick}/> 
+    </header>
   )
+}
+
+const headingStyle = {color: 'red', backgroundColor: 'black',}
+Header.defaultProps = {
+    title: 'Task Tacker'
+}
+Header.propTypes = {
+    title: PropTypes.string.isRequired
 }
 
 export default Header
